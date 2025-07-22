@@ -1,0 +1,75 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Compiled source (TypeScript)
+dist/
+build/
+
+# Optional npm cache directory
+.npm/
+
+# dotenv environment files
+.env
+.env.*.local
+.env.local
+
+# Dependency directories
+node_modules/
+packages/*/node_modules/
+
+# Coverage directory
+coverage/
+
+# IDE and OS junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# VS Code
+.vscode/
+
+# React build (if monorepo)
+frontend/build/
+
+# Logs inside any workspace
+**/logs/
+**/*.log
+
+
+# Yarn v2
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Debugger
+*.tgz
+
+# Parcel cache
+.cache/
+
+# Storybook
+storybook-static/
+
+# Mac system files
+Icon?
+
+# JetBrains IDEs
+.idea/
+
+# Test output
+test-output/
