@@ -9,6 +9,12 @@ const userSchema = new Schema<UserDocuments>(
       required: true,
       unique: true,
     },
+    email: {
+      type: String,
+      required: true,
+      lowercase: true,
+      unique: true,
+    },
     passwordHash: {
       type: String,
       required: true,
@@ -19,12 +25,6 @@ const userSchema = new Schema<UserDocuments>(
       required: true,
     },
     profile: {
-      email: {
-        type: String,
-        required: true,
-        lowercase: true,
-        unique: true,
-      },
       firstName: {
         type: String,
         required: true,

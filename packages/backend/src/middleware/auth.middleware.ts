@@ -5,7 +5,7 @@ import redisClient from "../utils/redisClient.utils";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model";
 
-interface JwtPayload {
+export interface JwtPayload {
   userId: string;
   email: string;
   role: "admin" | "manager" | "member";

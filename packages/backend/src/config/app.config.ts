@@ -6,6 +6,7 @@ const appConfig = () => ({
   BASE_PATH: getEnv("BASE_PATH", "/api"),
   MONGO_URI: getEnv("MONGO_URI", ""),
   JWT_SECRET: getEnv("JWT_SECRET"),
+  JWT_REFRESH_SECRET: getEnv("JWT_REFRESH_SECRET"),
   JWT_EXPIRES_IN: getEnv("JWT_EXPIRES_IN", "86400"),
   REDIS_URL: getEnv("REDIS_URL"),
   ALLOWED_ORIGINS: getEnv("ALLOWED_ORIGINS", "http://localhost:5173"),

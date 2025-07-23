@@ -5,10 +5,10 @@ export type UserRole = "admin" | "manager" | "member";
 export interface UserDocuments {
   _id: ObjectId;
   username: string;
+  email: string;
   passwordHash: string;
   isActive: boolean;
   profile: {
-    email: string;
     firstName: string;
     lastName: string;
     avatar: string;

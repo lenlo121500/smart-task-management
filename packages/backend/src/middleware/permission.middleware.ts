@@ -29,7 +29,7 @@ export enum Permission {
 }
 
 // Role-based permission matrix
-const ROLE_PERMISSIONS: Record<string, Permission[]> = {
+export const ROLE_PERMISSIONS: Record<string, Permission[]> = {
   admin: Object.values(Permission), // full access
   manager: [
     Permission.PROJECT_CREATE,
