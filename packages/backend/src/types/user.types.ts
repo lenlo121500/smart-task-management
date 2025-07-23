@@ -4,19 +4,21 @@ export type UserRole = "admin" | "manager" | "member";
 
 export interface UserDocuments {
   _id: ObjectId;
-  username: String;
-  passwordHash: String;
+  username: string;
+  passwordHash: string;
+  isActive: boolean;
   profile: {
-    firstName: String;
-    lastName: String;
-    avatar: String;
-    timezone: String;
+    email: string;
+    firstName: string;
+    lastName: string;
+    avatar: string;
+    timezone: string;
   };
   role: UserRole;
   workspaces: [ObjectId];
   preferences: {
-    notifications: Boolean;
-    theme: String;
+    notifications: boolean;
+    theme: string;
   };
   lastActive: Date;
   createdAt: Date;
