@@ -6,7 +6,7 @@ export type ProjectPriority = "low" | "medium" | "high" | "urgent";
 export interface ProjectDocument {
   _id: ObjectId;
   name: string;
-  description: string;
+  description?: string;
   workspace: ObjectId; // Reference to the workspace
   owner: ObjectId; // Reference to the user
   members: ObjectId[]; // Reference to the users
@@ -14,7 +14,7 @@ export interface ProjectDocument {
   priority: ProjectPriority;
   startDate: Date;
   dueDate: Date;
-  tags: string[];
+  tags?: string[];
   progress: number; // e.g., 0–100 or calculated dynamically
   createdAt: Date;
   updatedAt: Date;

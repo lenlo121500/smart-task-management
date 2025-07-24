@@ -14,7 +14,7 @@ export interface WorkspaceSettings {
 export interface WorkspaceDocument {
   _id: ObjectId;
   name: string;
-  description: string;
+  description?: string;
   owner: ObjectId;
   members: WorkspaceMember[];
   settings: WorkspaceSettings;
@@ -32,9 +32,9 @@ export interface CommentDocument {
   content: string;
   author: ObjectId;
   task: ObjectId;
-  mentions: ObjectId[];
+  mentions?: ObjectId[];
   parentComment: ObjectId | null;
-  reactions: CommentReaction[];
+  reactions?: CommentReaction[];
   createdAt: Date;
   updatedAt: Date;
 }

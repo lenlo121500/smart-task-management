@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, HydratedDocument } from "mongoose";
 import { compareValue, hashValue } from "../utils/bcrypt.utils";
 import { UserDocuments } from "../types/user.types";
 
@@ -80,16 +80,17 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.methods.omitPassword = function (): Omit<
-  UserDocuments,
-  "passwordHash"
-> {
-  const userObject = this.toObject();
-  delete userObject.passwordHash;
-  return userObject;
+userSchema.methods.omitPassword = function (
+  this: HydratedDocument<UserDocuments>
+) {
+  const { passwordHash, ...rest } = this.toObject();
+  return rest;
 };
 
-userSchema.methods.comparePassword = async function (password: string) {
+userSchema.methods.comparePassword = async function (
+  this: HydratedDocument<UserDocuments>,
+  password: string
+) {
   return await compareValue(password, this.passwordHash);
 };
 
