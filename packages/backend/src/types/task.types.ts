@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 
 export interface TaskAttachment {
   filename: string;
@@ -10,7 +10,7 @@ export interface TaskAttachment {
 export type TaskStatus = "todo" | "in-progress" | "review" | "completed";
 export type TaskPriority = "low" | "medium" | "high" | "urgent";
 
-export interface TaskDocument {
+export interface TaskDocument extends Document {
   _id: ObjectId;
   title: string;
   description?: string;

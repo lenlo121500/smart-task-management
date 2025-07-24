@@ -1,5 +1,5 @@
+import bcrypt from "bcrypt";
 import mongoose, { Schema, HydratedDocument } from "mongoose";
-import { compareValue, hashValue } from "../utils/bcrypt.utils";
 import { UserDocuments } from "../types/user.types";
 
 const userSchema = new Schema<UserDocuments>(
@@ -73,7 +73,8 @@ const userSchema = new Schema<UserDocuments>(
 userSchema.pre("save", async function (next) {
   if (this.isModified("passwordHash")) {
     if (this.passwordHash) {
-      this.passwordHash = await hashValue(this.passwordHash);
+      const salt = await bcrypt.genSalt(10);
+      this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
     }
   }
 
@@ -91,7 +92,7 @@ userSchema.methods.comparePassword = async function (
   this: HydratedDocument<UserDocuments>,
   password: string
 ) {
-  return await compareValue(password, this.passwordHash);
+  return await bcrypt.compare(password, this.passwordHash);
 };
 
 const User = mongoose.model("User", userSchema);

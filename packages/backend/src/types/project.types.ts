@@ -1,9 +1,9 @@
-import { ObjectId } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 
 export type ProjectStatus = "active" | "completed" | "archived";
 export type ProjectPriority = "low" | "medium" | "high" | "urgent";
 
-export interface ProjectDocument {
+export interface ProjectDocument extends Document {
   _id: ObjectId;
   name: string;
   description?: string;

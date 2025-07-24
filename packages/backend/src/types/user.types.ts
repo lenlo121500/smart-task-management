@@ -1,8 +1,8 @@
-import { ObjectId } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 
 export type UserRole = "admin" | "manager" | "member";
 
-export interface UserDocuments {
+export interface UserDocuments extends Document {
   _id: ObjectId;
   username: string;
   email: string;
@@ -21,6 +21,7 @@ export interface UserDocuments {
     theme: string;
   };
   lastActive: Date;
+  comparePassword(value: string): Promise<boolean>;
   createdAt: Date;
   updatedAt: Date;
 }

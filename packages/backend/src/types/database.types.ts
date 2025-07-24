@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 
 export interface WorkspaceMember {
   userId: ObjectId;
@@ -11,7 +11,7 @@ export interface WorkspaceSettings {
   allowGuestAccess: boolean;
 }
 
-export interface WorkspaceDocument {
+export interface WorkspaceDocument extends Document {
   _id: ObjectId;
   name: string;
   description?: string;
@@ -27,7 +27,7 @@ export interface CommentReaction {
   users: ObjectId[];
 }
 
-export interface CommentDocument {
+export interface CommentDocument extends Document {
   _id: ObjectId;
   content: string;
   author: ObjectId;
@@ -44,7 +44,7 @@ export interface ActivityTarget {
   id: ObjectId;
 }
 
-export interface ActivityLogDocument {
+export interface ActivityLogDocument extends Document {
   _id: ObjectId;
   actor: ObjectId;
   action: "create" | "update" | "delete" | "assign" | "comment";
@@ -54,7 +54,7 @@ export interface ActivityLogDocument {
   createdAt: Date;
 }
 
-export interface NotificationDocument {
+export interface NotificationDocument extends Document {
   _id: ObjectId;
   recipient: ObjectId;
   type: "task_assigned" | "mention" | "deadline_reminder" | "comment_reply";
