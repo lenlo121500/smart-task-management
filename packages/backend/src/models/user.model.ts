@@ -66,6 +66,9 @@ const userSchema = new Schema<UserDocuments>(
       type: Date,
       required: true,
     },
+    emailVerified: {
+      type: Boolean,
+    },
   },
   { timestamps: true }
 );

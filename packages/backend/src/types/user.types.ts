@@ -21,6 +21,7 @@ export interface UserDocuments extends Document {
     theme: string;
   };
   lastActive: Date;
+  emailVerified: boolean;
   comparePassword(value: string): Promise<boolean>;
   omitPassword(): Omit<Record<string, any>, "passwordHash">;
   createdAt: Date;

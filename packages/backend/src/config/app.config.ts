@@ -10,6 +10,11 @@ const appConfig = () => ({
   JWT_EXPIRES_IN: getEnv("JWT_EXPIRES_IN", "86400"),
   REDIS_URL: getEnv("REDIS_URL"),
   ALLOWED_ORIGINS: getEnv("ALLOWED_ORIGINS", "http://localhost:5173"),
+  RESEND_API_KEY: getEnv("RESEND_API_KEY"),
+  RESEND_EMAIL_FROM: getEnv("EMAIL_FROM"),
+  APP_NAME: getEnv("APP_NAME", "Smart Task"),
+  APP_URL: getEnv("APP_URL", "http://localhost:5173"),
+  SUPPORT_EMAIL: getEnv("SUPPORT_EMAIL", "support@yourapp"),
 });
 
 export const config = appConfig();

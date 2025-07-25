@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to {{{appName}}}</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      .container {
+        background: white;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+      .welcome-title {
+        color: #2c3e50;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 20px 0;
+        font-weight: 500;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .feature-list {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .feature-list ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+      .feature-list li {
+        margin-bottom: 8px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        color: #666;
+        font-size: 14px;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">{{{appName}}}</div>
+      </div>
+
+      <h1 class="welcome-title">Welcome to {{{appName}}}, {{firstName}}! 🎉</h1>
+
+      <p>
+        Thank you for joining {{{appName}}}! We're excited to have you on board.
+        Your account has been successfully created with the username
+        <strong>{{username}}</strong>.
+      </p>
+
+      {{#workspaceName}}
+      <p>
+        We've also created your first workspace called
+        "<strong>{{workspaceName}}</strong>" to help you get started right away.
+      </p>
+      {{/workspaceName}}
+
+      <div style="text-align: center">
+        <a href="{{appUrl}}/login" class="btn">Get Started</a>
+      </div>
+
+      <div class="feature-list">
+        <h3>Here's what you can do with {{{appName}}}:</h3>
+        <ul>
+          <li>Create and manage multiple workspaces</li>
+          <li>Collaborate with team members</li>
+          <li>Organize your projects efficiently</li>
+          <li>Customize your workspace settings</li>
+          {{#additionalFeatures}}
+          <li>{{.}}</li>
+          {{/additionalFeatures}}
+        </ul>
+      </div>
+
+      <p>
+        If you have any questions or need help getting started, don't hesitate
+        to reach out to our support team at
+        <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>.
+      </p>
+
+      <p>Welcome aboard!</p>
+      <p>The {{{appName}}} Team</p>
+
+      <div class="footer">
+        <p>&copy; {{currentYear}} {{{appName}}}. All rights reserved.</p>
+        <p>If you didn't create this account, please contact us immediately.</p>
+      </div>
+    </div>
+  </body>
+</html>
