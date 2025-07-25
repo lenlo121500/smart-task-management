@@ -1,9 +1,9 @@
 import { config } from "../config/app.config";
 import { APIError } from "../utils/APIError.utils";
 import { NextFunction, Response, Request } from "express";
-import redisClient from "../utils/redisClient.utils";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model";
+import { TokenManager } from "../utils/token.utils";
 
 export interface JwtPayload {
   userId: string;
@@ -11,6 +11,7 @@ export interface JwtPayload {
   role: "admin" | "manager" | "member";
   workspaceId?: string;
   permissions: string[];
+  jti: string;
   iat: number;
   exp: number;
 }
@@ -26,9 +27,8 @@ export const authMiddleware = async (
       throw new APIError("No token provided", 401);
     }
 
-    // check redis blacklist for revoked tokens
-    const isBlacklisted = await redisClient.get(`blacklist:${token}`);
-    if (isBlacklisted) {
+    const isRevoked = await TokenManager.isTokenRevoked(token);
+    if (isRevoked) {
       throw new APIError("Token has been revoked", 401);
     }
 
@@ -45,6 +45,7 @@ export const authMiddleware = async (
 
     next();
   } catch (error) {
+    if (error instanceof APIError) return next(error);
     return next(new APIError("Invalid token", 401));
   }
 };

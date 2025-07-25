@@ -22,6 +22,7 @@ export interface UserDocuments extends Document {
   };
   lastActive: Date;
   comparePassword(value: string): Promise<boolean>;
+  omitPassword(): Omit<Record<string, any>, "passwordHash">;
   createdAt: Date;
   updatedAt: Date;
 }
